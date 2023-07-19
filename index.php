@@ -10,14 +10,13 @@ $balance_july = $query->fetch();
 
 
 // request to database for july's expenses
-$query = $dbCo->prepare("SELECT `date_transaction`, `name`,`amount` 
+$query = $dbCo->prepare("SELECT `date_transaction`, `name`,`amount`, `id_transaction`
                         FROM `transaction`
                         WHERE MONTH(`date_transaction`) = 7 AND YEAR(`date_transaction`) = 2023
                         ORDER BY `date_transaction` DESC;");
 $query->execute();
 $expenses = $query->fetchAll();
 
-// var_dump($july);
 
 
 ?>
@@ -69,39 +68,35 @@ include 'header.php';
                     </thead>
                     <tbody>
                     <?php
+                        
                         foreach($expenses as $expense) {
-                        echo '
-                        <tr>
-                            <td width="50" class="ps-3"></td>
-                            <td>
-                                <time datetime="' . $expense['date_transaction'] . '" class="d-block fst-italic fw-light">' . $expense['date_transaction'] . '</time>
-                                ' . $expense['name'] . '
-                            </td>
-                            <td class="text-end">
-                                <span class="rounded-pill text-nowrap bg-warning-subtle px-2">
-                                ' . $expense['amount'] . ' €
-                                </span>
-                            </td>
-                            <td class="text-end text-nowrap">
-                                <a href="#" class="btn btn-outline-primary btn-sm rounded-circle">
-                                    <i class="bi bi-pencil"></i>
-                                </a>
-                                <a href="#" class="btn btn-outline-danger btn-sm rounded-circle">
-                                    <i class="bi bi-trash"></i>
-                                </a>
-                            </td> 
-                        </tr>'
+                            echo '
+                            <tr>
+                                <td width="50" class="ps-3"></td>
+                                <td>
+                                    <time datetime="' . $expense['date_transaction'] . '" class="d-block fst-italic fw-light">' . $expense['date_transaction'] . '</time>
+                                    ' . $expense['name'] . '
+                                </td>
+                                <td class="text-end">
+                                    <span class="rounded-pill text-nowrap bg-warning-subtle px-2">
+                                    ' . $expense['amount'] . ' €
+                                    </span>
+                                </td>
+                                <td class="text-end text-nowrap">
+                                    <a href="update_expense.php?id=' . $expense['id_transaction'] . '" class="btn btn-outline-primary btn-sm rounded-circle">
+                                        <i class="bi bi-pencil"></i>
+                                    </a>
+                                    <a href="delete.php?id=' . $expense['id_transaction'] . '" class="btn btn-outline-danger btn-sm rounded-circle">
+                                        <i class="bi bi-trash"></i>
+                                    </a>
+                                </td> 
+                            </tr>'
                         ;}
                         ?>
                     </tbody>
                 </table>
         </div>
         
-                        
-        
-
-                   
-
             <div class="card-footer">
                 <nav class="text-center">
                     <ul class="pagination d-flex justify-content-center m-2">
