@@ -17,7 +17,7 @@ $query = $dbCo->prepare("SELECT `date_transaction`, `name`,`amount`
 $query->execute();
 $expenses = $query->fetchAll();
 
-var_dump($july);
+// var_dump($july);
 
 
 ?>
@@ -125,7 +125,7 @@ include 'header.php';
     </div>
 
     <div class="position-fixed bottom-0 end-0 m-3">
-        <a href="add.html" class="btn btn-primary btn-lg rounded-circle">
+        <a href="add.php" class="btn btn-primary btn-lg rounded-circle">
             <i class="bi bi-plus fs-1"></i>
         </a>
     </div>
@@ -135,3 +135,4 @@ include 'header.php';
 include 'footer.php';
 ?>
 </body>
+</html>
