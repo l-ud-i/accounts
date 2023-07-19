@@ -6,6 +6,7 @@ session_start();
 $token = md5(uniqid(mt_rand(), true));
 $_SESSION['token'] = $token;
 
+
 ?>
 
 

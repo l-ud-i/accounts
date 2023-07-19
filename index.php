@@ -19,6 +19,7 @@ $expenses = $query->fetchAll();
 
 
 
+
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +84,7 @@ include 'header.php';
                                     </span>
                                 </td>
                                 <td class="text-end text-nowrap">
-                                    <a href="update_expense.php?id=' . $expense['id_transaction'] . '" class="btn btn-outline-primary btn-sm rounded-circle">
+                                    <a href="update.php?id_transaction=' . $expense['id_transaction'] . '" class="btn btn-outline-primary btn-sm rounded-circle">
                                         <i class="bi bi-pencil"></i>
                                     </a>
                                     <a href="delete.php?id=' . $expense['id_transaction'] . '" class="btn btn-outline-danger btn-sm rounded-circle">

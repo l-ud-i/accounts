@@ -25,17 +25,20 @@ $_SESSION['token'] = $token;
 
 <?php
 include 'header.php';
+
+
 ?>
 
 
     <div class="container">
         <section class="card mb-4 rounded-3 shadow-sm">
             <div class="card-header py-3">
-                <h1 class="my-0 fw-normal fs-4">Ajouter une opération</h1>
+                <h1 class="my-0 fw-normal fs-4">Modifier une opération</h1>
             </div>
             <div class="card-body">
                 <form action="update_expense.php" method="post" autocomplete="off">
                     <input class="" type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
+                    <input type="hidden" name="id_transaction" value="<?=$_GET['id_transaction']?>">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom de l'opération *</label>
                         <input type="text" class="form-control" name="name" id="name"
@@ -67,7 +70,7 @@ include 'header.php';
                         </select>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-primary btn-lg">Ajouter</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Modifier</button>
                     </div>
                 </form>
             </div>
