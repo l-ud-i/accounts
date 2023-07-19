@@ -52,10 +52,11 @@ include 'header.php';
                 ?>
             </div>
         </section>
-
-                    <?php
-                        foreach($expenses as $expense) {
-                        echo '
+        
+        <section class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h1 class="my-0 fw-normal fs-4">Opérations de Juillet 2023</h1>
+            </div>
 
         <div class="card-body">
                 <table class="table table-striped table-hover align-middle">
@@ -67,6 +68,9 @@ include 'header.php';
                         </tr>
                     </thead>
                     <tbody>
+                    <?php
+                        foreach($expenses as $expense) {
+                        echo '
                         <tr>
                             <td width="50" class="ps-3"></td>
                             <td>
@@ -86,13 +90,15 @@ include 'header.php';
                                     <i class="bi bi-trash"></i>
                                 </a>
                             </td> 
-                        </tr>
+                        </tr>'
+                        ;}
+                        ?>
                     </tbody>
                 </table>
-        </div>';
-        }
+        </div>
+        
                         
-        ?>
+        
 
                    
 
