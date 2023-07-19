@@ -1,6 +1,7 @@
 <?php
 require 'includes/_database.php';
 
+// request to database the current operation
 $query = $dbCo->prepare("SELECT `name`, `date_transaction`, `amount`, `id_category` FROM `transaction` WHERE id_transaction = :id");
 $query->execute(['id' => $_POST['id_transaction']]);
 $existingData = $query->fetch();
@@ -17,11 +18,11 @@ if ($existingData) {
     ]);
 
     if ($isOK) {
-        // La mise à jour a été effectuée avec succès
+        // update ok
         header('Location: index.php?notif=add_ok');
         exit;
     } else {
-        // Une erreur s'est produite lors de la mise à jour
+        // update ko
         header('Location: index.php?notif=add_err');
         exit;
     }
