@@ -1,5 +1,11 @@
 <?php
 require 'includes/_database.php';
+
+session_start();
+// generate a token when the page reloads
+$token = md5(uniqid(mt_rand(), true));
+$_SESSION['token'] = $token;
+
 ?>
 
 
@@ -29,6 +35,7 @@ include 'header.php';
             </div>
             <div class="card-body">
                 <form action="add_expense.php" method="post" autocomplete="off">
+                    <input class="" type="hidden" name="token" value="<?= $_SESSION['token'] ?>">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nom de l'opération *</label>
                         <input type="text" class="form-control" name="name" id="name"
